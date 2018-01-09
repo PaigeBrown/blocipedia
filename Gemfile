@@ -31,6 +31,8 @@ source 'https://rubygems.org'
    gem 'pry-rails'
  end
 
+gem 'bootstrap-sass'
+
 
 # source 'https://rubygems.org'
 
