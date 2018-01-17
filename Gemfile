@@ -31,7 +31,10 @@ source 'https://rubygems.org'
    gem 'pry-rails'
  end
 
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
+# commented this out because already have bootstrap above
+
+gem 'devise'
 
 
 # source 'https://rubygems.org'
