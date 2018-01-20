@@ -36,6 +36,7 @@ source 'https://rubygems.org'
 
 gem 'devise'
 
+gem 'pundit'
 
 # source 'https://rubygems.org'
 
