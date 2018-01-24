@@ -38,6 +38,8 @@ gem 'devise'
 
 gem 'pundit'
 
+ gem 'stripe'
+
 # source 'https://rubygems.org'
 
 
