@@ -10,6 +10,7 @@
 <!-- <% end %>-->
  
  <%= form_tag charges_path do %>
+  <h4>If you want to upgrade your account to premium,</h4>
    <h4>Click the button!</h4>
    <script class='stripe-button' 
    src="https://checkout.stripe.com/checkout.js" 
@@ -19,3 +20,14 @@
        
    </script>
  <% end %>
+ 
+ <h3>Change My Account</h3>
+ 
+ <h4>Downgrade your account to standard</h4>
+ 
+ <h4>You have to sign up to premium to be able to use this function</h4>
+
+
+<% if current_user.premium? %>
+       <%= link_to "Downgrade", downgrade_user_path(current_user),data: { confirm: "Are you sure?" }, class: 'btn btn-warning' %>
+<% end %>
