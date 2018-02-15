@@ -39,6 +39,8 @@ gem 'devise'
 gem 'pundit'
 
  gem 'stripe'
+ 
+ gem 'redcarpet'
 
 # source 'https://rubygems.org'
 
