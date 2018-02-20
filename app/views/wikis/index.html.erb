@@ -22,7 +22,21 @@
 
 <% if current_user.premium? %>
 <h1> Private Wikis</h1>
-<% Wiki.where(private: nil).each do |wiki| %>
+<% Wiki.where(private: true).each do |wiki| %>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= link_to markdown(wiki.title), wiki %>
+            </h4>
+            <small>
+              <%= markdown(wiki.body) %>
+            </small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+  <% Wiki.where(private: nil).each do |wiki| %>
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
