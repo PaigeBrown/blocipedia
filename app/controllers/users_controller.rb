@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    
+    @wikis = policy_scope(Wiki)
   end
   
 end

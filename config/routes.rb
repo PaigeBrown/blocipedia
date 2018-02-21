@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :charges, only: [:new, :create]  
-  resources :wikis
+  resources :wikis do
+    resources :collaborators, only: [:create, :destroy]
+  end
   resources :users
   
   match "users/:id/downgrade" => "users#downgrade", :as => "downgrade_user", via: [:get, :post]

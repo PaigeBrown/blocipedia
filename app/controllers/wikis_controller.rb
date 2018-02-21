@@ -6,7 +6,8 @@ class WikisController < ApplicationController
   after_action :verify_authorized, :except => :index
 
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
+    @collaborators = @wiki.collaborators
   end
 
   def show
@@ -67,7 +68,7 @@ class WikisController < ApplicationController
  private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
+    params.require(:wiki).permit(:title, :body, :private, :public)
   end
 
 end
