@@ -6,7 +6,10 @@ class WikisController < ApplicationController
   after_action :verify_authorized, :except => :index
 
   def index
-    @wikis = Wiki.all
+    # @wikis = Wiki.all
+    @public_wikis =  Wiki.where(private: false)
+    @private_wikis =  Wiki.where(private: true)
+    
   end
 
   def show

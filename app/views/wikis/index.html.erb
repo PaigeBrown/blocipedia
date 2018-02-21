@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-8">
-      <% Wiki.where(private: false).each do |wiki| %>
+      <% @public_wikis.each do |wiki| %>
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
@@ -22,7 +22,7 @@
 
 <% if current_user.premium? %>
 <h1> Private Wikis</h1>
-<% Wiki.where(private: true).each do |wiki| %>
+<% @private_wikis.each do |wiki| %>
         <div class="media">
           <div class="media-body">
             <h4 class="media-heading">
