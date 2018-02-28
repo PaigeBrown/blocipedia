@@ -1,20 +1,22 @@
 class CollaboratorsController < ApplicationController
-    def create
+  
+  
+  def new
     @wiki = Wiki.find(params[:wiki_id])
-    @user = User.find_by_email(params[:collaborator][:user])
+    @collaboration = Collaborator.new
+  end  
+    
+  def create
+    @wiki = Wiki.find(params[:wiki_id])
+    @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
+    
 
-    if User.exists?(@user)
-      @collaborator = @wiki.collaborators.new(wiki_id: @wiki.id, user_id: @user.id)
-
-      if @collaborator.save
-        flash[:notice] = "User added"
-      else
-        flash[:error] = "Error"
-      end
+    if @collaborator.save
+      flash[:notice] = "Collaborator was added to this wiki."
       redirect_to @wiki
     else
-      flash[:error] = "Error, no such user"
-      redirect_to @wiki
+      flash[:error] = "Collaborator was not added. Please try again."
+      render :show
     end
   end
 
@@ -29,5 +31,9 @@ class CollaboratorsController < ApplicationController
       flash.now[:alert] = "There was an error"
       redirect_to @wiki
     end
+  end
+  
+  def collaborator_params
+    params.require(:collaborator).permit( :email, :premium, :standard )
   end
 end

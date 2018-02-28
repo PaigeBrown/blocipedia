@@ -20,6 +20,9 @@
           <%= f.label :body %>
           <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
       </div>
+      
+      collaborators: <%= @wiki.collaborators.count %>  
+        <%= render partial: 'collaborators/form', locals: { wiki: @wiki } %>
 
       <%= f.submit "Save", class: 'btn btn-success' %>
       <% end %>

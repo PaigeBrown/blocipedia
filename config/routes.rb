@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :charges, only: [:new, :create]  
   resources :wikis do
-    resources :collaborators, only: [:create, :destroy]
+    resources :collaborators, only: [:new, :create, :destroy]
+  
   end
   resources :users
+  
+  match "/wikis/:wiki_id/collaborators" => "collaborators#create", :as => "create_collaborator", via: [:patch]
   
   match "users/:id/downgrade" => "users#downgrade", :as => "downgrade_user", via: [:get, :post]
 
